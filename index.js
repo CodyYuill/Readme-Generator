@@ -58,8 +58,13 @@ inquirer
         },
         {
             type: "input",
-            message: "Questions: ",
-            name: "questions"
+            message: "Enter your Github Username: ",
+            name: "github"
+        },
+        {
+            type: "input",
+            message: "Enter your Email: ",
+            name: "email"
         },
     ]).then(data =>{
         fs.writeFile('readme.md', 
@@ -92,13 +97,14 @@ ${data.contributing}
 ${data.tests}
 
 ## Questions
-${data.questions}
+https://github.com/${data.github}\n
+For further questions you can email me at : ${data.email}
 
 ## License
 ${data.license == "None" ? '' : data.license}
 
 `, 
-            (err) => err ? console.error(err) : console.log('Success! Readme Genereated!')
+    (err) => err ? console.error(err) : console.log('Success! Readme Genereated!')
         );
     });
 
